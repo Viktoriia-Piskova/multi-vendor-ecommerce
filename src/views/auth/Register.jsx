@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 
 const Register = () => {
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const handleInputChange = (e) => {
+    setFormState({...formState, [e.target.name]: e.target.value});
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    console.log(formState);
+  };
   return (
     <div className="min-w-screen min-h-screen bg-[#cdcae9] flex justify-center items-center">
       <div className="w-[350px] text-white- p-2">
@@ -12,10 +26,15 @@ const Register = () => {
           <p className="text-sm mb-3 font-medium">
             Please register your account
           </p>
-          <form>
+          <form
+            onSubmit={(e) => {
+              handleFormSubmit(e);
+            }}
+          >
             <div className="flex flex-col w-full gap-1 mb-3">
               <label htmlFor="name">Name</label>
               <input
+                onChange={(e) => handleInputChange(e)}
                 className="px-3 py-2 outline-none border border-slate-400 bg-transparent rounded-md"
                 type="text"
                 name="name"
@@ -27,6 +46,7 @@ const Register = () => {
             <div className="flex flex-col w-full gap-1 mb-3">
               <label htmlFor="email">Email</label>
               <input
+                onChange={(e) => handleInputChange(e)}
                 className="px-3 py-2 outline-none border border-slate-400 bg-transparent rounded-md"
                 type="email"
                 name="email"
@@ -38,6 +58,7 @@ const Register = () => {
             <div className="flex flex-col w-full gap-1 mb-3">
               <label htmlFor="password">Password</label>
               <input
+                onChange={(e) => handleInputChange(e)}
                 className="px-3 py-2 outline-none border border-slate-400 bg-transparent rounded-md"
                 type="password"
                 name="password"
@@ -57,7 +78,10 @@ const Register = () => {
                 I agree to privacy policy and terms
               </label>
             </div>
-            <button className="bg-slate-800 w-full hover:shadow-blue-300/50 hover:shadow-md text-white rounded-md px-7 py-2 mb-3 transition-all duration-300 ease-in-out">
+            <button
+              type="submit"
+              className="bg-slate-800 w-full hover:shadow-blue-300/50 hover:shadow-md text-white rounded-md px-7 py-2 mb-3 transition-all duration-300 ease-in-out"
+            >
               Sign up
             </button>
             <div className="flex items-center mb-3 gap-3 justify-center">

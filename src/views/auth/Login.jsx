@@ -1,19 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 
 const Login = () => {
+  const [formState, setFormState] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleInputChange = (e) => {
+    setFormState({ ...formState, [e.target.name]: e.target.value });
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    console.log(formState);
+  };
+
   return (
     <div className="min-w-screen min-h-screen bg-[#cdcae9] flex justify-center items-center">
       <div className="w-[350px] text-white- p-2">
         <div className="bg-[#6f68d1] p-4 rounded-md text-white">
           <h2 className="text-xl mb-3 font-bold">Welcome to Ecommerce</h2>
           <p className="text-sm mb-3 font-medium">Please log in</p>
-          <form>
+          <form onSubmit={(e) => handleFormSubmit(e)}>
             <div className="flex flex-col w-full gap-1 mb-3">
               <label htmlFor="email">Email</label>
               <input
+                onChange={(e) => handleInputChange(e)}
                 className="px-3 py-2 outline-none border border-slate-400 bg-transparent rounded-md"
                 type="email"
                 name="email"
@@ -25,6 +40,7 @@ const Login = () => {
             <div className="flex flex-col w-full gap-1 mb-3">
               <label htmlFor="password">Password</label>
               <input
+                onChange={(e) => handleInputChange(e)}
                 className="px-3 py-2 outline-none border border-slate-400 bg-transparent rounded-md"
                 type="password"
                 name="password"
@@ -40,7 +56,7 @@ const Login = () => {
               <p>
                 Don't have an account?
                 <Link to="/register" className="font-bold ml-2 hover:underline">
-                   Register
+                  Register
                 </Link>
               </p>
             </div>
