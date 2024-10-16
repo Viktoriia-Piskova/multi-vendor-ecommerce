@@ -10,7 +10,7 @@ export const admin_login = createAsyncThunk(
       });
       console.log(data);
     } catch (error) {
-      console.log(error.response.data.error)
+      console.log(error.response.data.error);
     }
   }
 );
@@ -28,7 +28,11 @@ export const authReducer = createSlice({
     //   state.successMessage = action.payload;
     // },
   },
-  extraReducers: () => {},
+  extraReducers: (builder) => {
+    builder.addCase(admin_login.pending, (state, { payload }) => {
+      state.loader = true;
+    });
+  },
 });
 
 export default authReducer.reducer;
