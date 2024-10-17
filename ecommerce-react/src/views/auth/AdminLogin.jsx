@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { admin_login } from "../../store/Reducers/authReducer";
+import { admin_login, clearMessage } from "../../store/Reducers/authReducer";
 import { PropagateLoader } from "react-spinners";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const AdminLogin = () => {
   const dispatch = useDispatch();
-  const { loader } = useSelector((state) => state.auth);
+  const { loader, errorMessage, successMessage } = useSelector(
+    (state) => state.auth
+  );
   const [formState, setFormState] = useState({
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
@@ -27,6 +33,18 @@ const AdminLogin = () => {
     justifyContent: "center",
     alignItems: "center",
   };
+
+  useEffect(() => {
+    if (errorMessage) {
+      toast.error(errorMessage);
+      dispatch(clearMessage());
+    }
+    if (successMessage) {
+      toast.success(successMessage);
+      dispatch(clearMessage());
+      navigate('/')
+    }
+  }, [errorMessage, successMessage]);
 
   return (
     <div className="min-w-screen min-h-screen bg-[#cdcae9] flex justify-center items-center">

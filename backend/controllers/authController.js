@@ -18,7 +18,7 @@ class AuthControllers {
           res.cookie("accessToken", token, {
             expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
           });
-          responseReturn(res, 200, { token });
+          responseReturn(res, 200, { token, message: "Login success" });
         } else {
           responseReturn(res, 401, { error: "Password is wrong" });
         }
