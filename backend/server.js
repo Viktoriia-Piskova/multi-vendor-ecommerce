@@ -26,4 +26,4 @@ app.use("/api", require("./routes/authRoutes"));
 
 app.get("/", (req, res) => res.send("My backend"));
 
-app.listen(port, () => console.log("Server is running"));
+app.listen(port, () => console.log(`Server is running on PORT ${port}`));
