@@ -6,6 +6,7 @@ import { FaUsers } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 
 const AdminDashboard = () => {
+  const dummyOrdersData = [1, 2, 3, 4, 5];
   const statsState = {
     series: [
       {
@@ -137,7 +138,7 @@ const AdminDashboard = () => {
 
       <div className="w-full flex flex-wrap mt-7">
         <div className="w-full lg:w-7/12 lg:pr-3">
-          <div className="w-full bg-[#6a5fdf] p-4 rounded-md">
+          <div className="w-full bg-est-violet-bright p-4 rounded-md">
             <Chart
               options={statsState.options}
               series={statsState.series}
@@ -148,16 +149,16 @@ const AdminDashboard = () => {
         </div>
 
         <div className="w-full lg:w-5/12 lg:pl-4 mt-6 lg:mt-0">
-          <div className="w-full bg-[#6a5fdf] p-4 rounded-md text-[#d0d2d6]">
+          <div className="w-full bg-est-violet-bright p-4 rounded-md text-est-light-grey">
             <div className="flex justify-between items-baseline">
-              <h2 className="font-semibold text-lg text-[#d0d2d6] pb-3">
+              <h2 className="font-semibold text-lg text-est-light-grey pb-3">
                 Resent seller message
               </h2>
-              <Link className="font-semibold text-sm text-[#d0d2d6] hover:text-[#7f9cd7]">
+              <Link className="font-semibold text-sm text-est-light-grey hover:text-[#7f9cd7]">
                 View all
               </Link>
             </div>
-            <div className="flex flex-col gap-2 pt-6 text-[#d0d2d6]">
+            <div className="flex flex-col gap-2 pt-6 text-est-light-grey">
               <ol className="relative border-1 border-slate-600 ml-4">
                 <li className="mb-3 ml-6">
                   <div className="flex absolute -left-5 shadow-lg justify-center items-center w-10 h-10 p-[6px] bg-[#4c7fe2] rounded-full z-10">
@@ -208,6 +209,61 @@ const AdminDashboard = () => {
               </ol>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="w-full p-4 bg-est-violet-bright rounded-md mt-6">
+        <div className="flex justify-between items-baseline">
+          <h2 className="font-semibold text-lg text-est-light-grey pb-3">
+            Resent orders
+          </h2>
+          <Link className="font-semibold text-sm text-est-light-grey hover:text-slate-800 transition-all">
+            View all
+          </Link>
+        </div>
+        <div className="relative overflow-x-auto">
+          <table className="w-full text-left">
+            <thead className="text-sm text-est-light-grey uppercase border-b border-slate-700">
+              <tr>
+                <th scope="col" className="py-3 pl-4">
+                  Order ID
+                </th>
+                <th scope="col" className="py-3 pl-4">
+                  Price
+                </th>
+                <th scope="col" className="py-3 pl-4">
+                  Payment Status
+                </th>
+                <th scope="col" className="py-3 pl-4">
+                  Order Status
+                </th>
+                <th scope="col" className="py-3 pl-4">
+                  Active
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {dummyOrdersData.map((data, index) => (
+                <tr key={index} className="text-est-light-grey">
+                  <td className="py-3 px-4 font-medium whitespace-nowrap">
+                    #323232
+                  </td>
+                  <td className="py-3 px-4 font-medium whitespace-nowrap">
+                    $456
+                  </td>
+                  <td className="py-3 px-4 font-medium whitespace-nowrap">
+                    Pending
+                  </td>
+                  <td className="py-3 px-4 font-medium whitespace-nowrap">
+                    Pending
+                  </td>
+                  <td className="py-3 px-4 font-medium whitespace-nowrap hover:">
+                    <Link className="transition-all hover:text-slate-800">View</Link> 
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
