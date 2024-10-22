@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Chart from "react-apexcharts";
 import { MdCurrencyExchange, MdProductionQuantityLimits } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
@@ -92,6 +93,7 @@ const AdminDashboard = () => {
       ],
     },
   };
+
   return (
     <div className="px-2 md:px-7 py-5">
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
@@ -142,6 +144,69 @@ const AdminDashboard = () => {
               type="bar"
               height={350}
             />
+          </div>
+        </div>
+
+        <div className="w-full lg:w-5/12 lg:pl-4 mt-6 lg:mt-0">
+          <div className="w-full bg-[#6a5fdf] p-4 rounded-md text-[#d0d2d6]">
+            <div className="flex justify-between items-baseline">
+              <h2 className="font-semibold text-lg text-[#d0d2d6] pb-3">
+                Resent seller message
+              </h2>
+              <Link className="font-semibold text-sm text-[#d0d2d6] hover:text-[#7f9cd7]">
+                View all
+              </Link>
+            </div>
+            <div className="flex flex-col gap-2 pt-6 text-[#d0d2d6]">
+              <ol className="relative border-1 border-slate-600 ml-4">
+                <li className="mb-3 ml-6">
+                  <div className="flex absolute -left-5 shadow-lg justify-center items-center w-10 h-10 p-[6px] bg-[#4c7fe2] rounded-full z-10">
+                    <img
+                      className="w-full rounded-full h-full shadow-lg"
+                      src="http://localhost:3000/images/admin.jpg"
+                      alt="Seller Avatar"
+                    />
+                  </div>
+                  <div className="p-3 bg-slate-800 rounded-lg border border-slate-600 shadow-sm">
+                    <div className="flex justify-between items-center mb-2">
+                      <Link className="text-md font-normal">Admin</Link>
+                      <time
+                        className="text-sm font-normal sm:order-last sm:mb-0"
+                        datetime=""
+                      >
+                        2 days ago
+                      </time>
+                    </div>
+                    <div className="p-2 text-xs font-normal bg-slate-700 rounded-lg border border-slate-800">
+                      <p>First message text</p>
+                    </div>
+                  </div>
+                </li>
+                <li className="mb-3 ml-6">
+                  <div className="flex absolute -left-5 shadow-lg justify-center items-center w-10 h-10 p-[6px] bg-[#4c7fe2] rounded-full z-10">
+                    <img
+                      className="w-full rounded-full h-full shadow-lg"
+                      src="http://localhost:3000/images/admin.jpg"
+                      alt="Seller Avatar"
+                    />
+                  </div>
+                  <div className="p-3 bg-slate-800 rounded-lg border border-slate-600 shadow-sm">
+                    <div className="flex justify-between items-center mb-2">
+                      <Link className="text-md font-normal">Admin</Link>
+                      <time
+                        className="text-sm font-normal sm:order-last sm:mb-0"
+                        datetime=""
+                      >
+                        10 days ago
+                      </time>
+                    </div>
+                    <div className="p-2 text-xs font-normal bg-slate-700 rounded-lg border border-slate-800">
+                      <p>Second message text</p>
+                    </div>
+                  </div>
+                </li>
+              </ol>
+            </div>
           </div>
         </div>
       </div>
