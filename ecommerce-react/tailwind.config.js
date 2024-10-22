@@ -8,6 +8,9 @@ module.exports = {
       colors: {
         'est-light-grey': '#d0d2d6',
         'est-violet-bright': '#6a5fdf',
+        'est-violet-medium': '#b1addf',
+        'est-violet-light': '#cdcae9',
+        'est-violet-additional': '#8288ed',
 
       }
     },
