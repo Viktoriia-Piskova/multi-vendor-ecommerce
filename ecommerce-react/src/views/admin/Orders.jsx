@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { LuArrowDownFromLine } from "react-icons/lu";
 import { IoIosArrowDown } from "react-icons/io";
+import Pagination from "../Pagination";
 
 const Orders = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchValue, useSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
   const [perPage, setPerPage] = useState(5);
   const [showDetails, setShowDetails] = useState(true);
 
@@ -84,6 +85,15 @@ const Orders = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="w-full flex justify-end mt-4">
+          <Pagination
+            currentPageNumber={currentPage}
+            setPageNumber={setCurrentPage}
+            totalItems={50}
+            perPage={perPage}
+            itemToShow={3}
+          />
         </div>
       </div>
     </div>
