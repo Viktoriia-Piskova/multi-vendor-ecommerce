@@ -171,12 +171,9 @@ const AdminDashboard = () => {
                   <div className="p-3 bg-slate-800 rounded-lg border border-slate-600 shadow-sm">
                     <div className="flex justify-between items-center mb-2">
                       <Link className="text-md font-normal">Admin</Link>
-                      <time
-                        className="text-sm font-normal sm:order-last sm:mb-0"
-                        datetime=""
-                      >
+                      <p className="text-sm font-normal sm:order-last sm:mb-0">
                         2 days ago
-                      </time>
+                      </p>
                     </div>
                     <div className="p-2 text-xs font-normal bg-slate-700 rounded-lg border border-slate-800">
                       <p>First message text</p>
@@ -194,12 +191,9 @@ const AdminDashboard = () => {
                   <div className="p-3 bg-slate-800 rounded-lg border border-slate-600 shadow-sm">
                     <div className="flex justify-between items-center mb-2">
                       <Link className="text-md font-normal">Admin</Link>
-                      <time
-                        className="text-sm font-normal sm:order-last sm:mb-0"
-                        datetime=""
-                      >
+                      <p className="text-sm font-normal sm:order-last sm:mb-0">
                         10 days ago
-                      </time>
+                      </p>
                     </div>
                     <div className="p-2 text-xs font-normal bg-slate-700 rounded-lg border border-slate-800">
                       <p>Second message text</p>
@@ -258,7 +252,9 @@ const AdminDashboard = () => {
                     Pending
                   </td>
                   <td className="py-3 px-4 font-medium whitespace-nowrap hover:">
-                    <Link className="transition-all hover:text-slate-800">View</Link> 
+                    <Link className="transition-all hover:text-slate-800">
+                      View
+                    </Link>
                   </td>
                 </tr>
               ))}

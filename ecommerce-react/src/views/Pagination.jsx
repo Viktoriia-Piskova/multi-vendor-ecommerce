@@ -26,7 +26,7 @@ const Pagination = ({
     for (let i = startPage; i < endPage; i++) {
       btns.push(
         <li
-          onClick={() => setPageNumber(i)}
+          onClick={() => setPageNumber(i)} key={i}
           className={`${
             currentPageNumber === i
               ? "bg-indigo-300 shadow-lg shadow-indigo-300/50 text-white"
