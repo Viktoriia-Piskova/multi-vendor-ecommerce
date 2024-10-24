@@ -3,16 +3,17 @@ import { Link } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
 import Pagination from "../Pagination";
 
-const Sellers = () => {
+const DeactivateSellers = () => {
   const [searchValue, setSearchValue] = useState("");
   const [perPage, setPerPage] = useState(5);
   const [currentPage, setCurrentPage] = useState(1);
   const [showDetails, setShowDetails] = useState(false);
 
-  const dummyOrdersData = [1, 2, 3, 4, 5];
+  const dummySellersData = [1, 2, 3, 4, 5];
+
   return (
     <div className="px-2 lg:px-7 pt-5">
-      <h1 className="text-xl font-bold mb-3">Sellers</h1>
+        <h1 className="text-xl font-bold mb-3">Deactivate sellers</h1>
       <div className="w-full p-4 bg-est-violet-bright rounded-md">
         <div className="flex justify-between items-center">
           <select
@@ -45,19 +46,10 @@ const Sellers = () => {
                   Name
                 </th>
                 <th scope="col" className="py-3 pl-4">
-                  Shop name
-                </th>
-                <th scope="col" className="py-3 pl-4">
-                  Payment status
-                </th>
-                <th scope="col" className="py-3 pl-4">
                   email
                 </th>
                 <th scope="col" className="py-3 pl-4">
-                  Division
-                </th>
-                <th scope="col" className="py-3 pl-4">
-                  District
+                  Status
                 </th>
                 <th scope="col" className="py-3 pl-4">
                   Action
@@ -65,7 +57,7 @@ const Sellers = () => {
               </tr>
             </thead>
             <tbody>
-              {dummyOrdersData.map((data, index) => (
+              {dummySellersData.map((data, index) => (
                 <tr key={index} className="text-est-light-grey">
                   <td className="py-3 px-4 font-medium whitespace-nowrap">
                     {data}
@@ -78,22 +70,13 @@ const Sellers = () => {
                     />
                   </td>
                   <td className="py-3 px-4 font-medium whitespace-nowrap">
-                    Great Product
+                    Great Seller
                   </td>
                   <td className="py-3 px-4 font-medium whitespace-nowrap">
-                    Super Shop
+                  test@test.com
                   </td>
                   <td className="py-3 px-4 font-medium whitespace-nowrap">
-                    Pending
-                  </td>
-                  <td className="py-3 px-4 font-medium whitespace-nowrap">
-                    test@test.com
-                  </td>
-                  <td className="py-3 px-4 font-medium whitespace-nowrap">
-                    Cherkasy
-                  </td>
-                  <td className="py-3 px-4 font-medium whitespace-nowrap">
-                    Holosiivsky
+                    Active
                   </td>
                   <td className="py-3 px-4 font-medium whitespace-nowrap hover:">
                     <div className="flex justify-start items-center gap-4">
@@ -122,4 +105,4 @@ const Sellers = () => {
   );
 };
 
-export default Sellers;
+export default DeactivateSellers;
