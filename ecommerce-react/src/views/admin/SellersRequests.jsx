@@ -14,7 +14,7 @@ const SellersRequests = () => {
   return (
     <div className="px-2 lg:px-7 pt-5">
         <h1 className="text-xl font-bold mb-3">Sellers requests</h1>
-      <div className="w-full p-4 bg-est-violet-bright rounded-md">
+        <div className="w-full p-4 bg-est-violet-bright rounded-md">
         <div className="flex justify-between items-center">
           <select
             onChange={(e) => setPerPage(parseInt(e.target.value))}
@@ -76,7 +76,7 @@ const SellersRequests = () => {
                   </td>
                   <td className="py-3 px-4 font-medium whitespace-nowrap hover:">
                     <div className="flex justify-start items-center gap-4">
-                      <Link className="transition-all p-[6px] bg-green-700 rounded hover:shadow-md hover:shadow-green-500/50">
+                      <Link to={'/admin/dashboard/seller/details/2'} className="transition-all p-[6px] bg-green-700 rounded hover:shadow-md hover:shadow-green-500/50">
                         <FaEye />
                       </Link>
                     </div>
