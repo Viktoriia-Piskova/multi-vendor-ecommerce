@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaEdit, FaImage, FaTrash } from "react-icons/fa";
 import { IoMdCloseCircle } from "react-icons/io";
-
 import Pagination from "../Pagination";
 
 const Categories = () => {
