@@ -9,7 +9,7 @@ const SellerDetails = () => {
           <div className="w-3/12 flex justify-center items-center py-3">
             <div>
               <img
-                className="w-full h-[230px]"
+                className="w-full max-h-[230px]"
                 src="http://localhost:3000/images/admin.jpg"
                 alt="Seller Name"
               />
