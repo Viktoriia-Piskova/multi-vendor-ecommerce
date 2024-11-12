@@ -10,6 +10,8 @@ module.exports = {
         "est-violet-light": "#cdcae9",
         "est-violet-additional": "#8288ed",
         "est-blue-light": "#8288ed",
+        "est-blue-bright": "#06b6d4",
+        "est-gray-meduim": "#475569",
       },
     },
   },
