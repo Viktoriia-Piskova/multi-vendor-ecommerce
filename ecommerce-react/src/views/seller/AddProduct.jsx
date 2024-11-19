@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { IoMdImages } from "react-icons/io";
+import { IoMdCloseCircle } from "react-icons/io";
 
 const AddProduct = () => {
   const [formData, setFormData] = useState({
@@ -28,6 +30,8 @@ const AddProduct = () => {
   const [showCategories, setShowCategories] = useState(false);
   const [allCategories, setAllCategories] = useState(categories);
   const [searchValue, setSearchValue] = useState("");
+  const [images, setImages] = useState([]);
+  const [imagesUrls, setImagesUrls] = useState([]);
 
   const handleInput = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -44,6 +48,47 @@ const AddProduct = () => {
     } else {
       setAllCategories(categories);
     }
+  };
+
+  const handleImage = (e) => {
+    const files = e.target.files;
+    const length = files.length;
+
+    if (length > 0) {
+      let newImagesUrls = [];
+      for (let i = 0; i < length; i++) {
+        newImagesUrls.push({
+          url: URL.createObjectURL(files[i]),
+          alt: files[i].name.split(".").slice(0, -1).join(".") || "Image",
+        });
+      }
+      setImagesUrls((prev) => [...prev, ...newImagesUrls]);
+      setImages((prev) => [...prev, ...files]);
+    }
+  };
+
+  const changeImage = (img, i) => {
+    if (img) {
+      let tempImage = [...images];
+      let tempUrl = [...imagesUrls];
+
+      tempImage[i] = img;
+      tempUrl[i] = {
+        url: URL.createObjectURL(img),
+        alt: img.name.split(".").slice(0, -1).join(".") || "Image",
+      };
+
+      setImagesUrls([...tempUrl]);
+      setImages([...tempImage]);
+    }
+  };
+
+  const removeImage = (i) => {
+    const filteredImages = images.filter((_, index) => i !== index);
+    const filteredImagesUrls = imagesUrls.filter((_, index) => i !== index);
+
+    setImages(filteredImages);
+    setImagesUrls(filteredImagesUrls);
   };
 
   return (
@@ -184,6 +229,55 @@ const AddProduct = () => {
                 value={formData.description || ""}
                 className="px-4 py-2 focus:border-indigo-500 transition-all outline-none rounded-md border border-slate-700 text-est-light-grey bg-est-violet-bright"
               ></textarea>
+            </div>
+            <div className="w-full mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 lg:grid-cols-4 text-est-light-grey">
+              {imagesUrls.map((img, i) => (
+                <div className="h-[180px] relative" key={i}>
+                  <label htmlFor={i}>
+                    <img
+                      className="w-auto h-auto max-h-full cursor-pointer"
+                      src={img.url}
+                      alt={img.alt}
+                    />
+                  </label>
+                  <input
+                    onChange={(e) => changeImage(e.target.files[0], i)}
+                    type="file"
+                    accept="image/*"
+                    id={i}
+                    className="hidden"
+                  />
+                  <span
+                    onClick={() => removeImage(i)}
+                    className="z-2 cursor-pointer bg-slate-700 hover:shadow-lg hover:shadow-slate-400/50 text-est-light-grey absolute top-1 right-1 rounded-full"
+                  >
+                    <IoMdCloseCircle className="text-2xl" />
+                  </span>
+                </div>
+              ))}
+              <label
+                htmlFor="image"
+                className="flex justify-center items-center flex-col h-[180px] cursor-pointer border border-dashed hover:border-red-500 "
+              >
+                <span>
+                  <IoMdImages />
+                </span>
+                <span>Select image</span>
+                <input
+                  multiple
+                  type="file"
+                  accept="image/*"
+                  name="image"
+                  id="image"
+                  className="hidden"
+                  onChange={(e) => handleImage(e)}
+                />
+              </label>
+            </div>
+            <div className="flex pt-5">
+              <button className="bg-red-500 shadow-lg hover:shadow-red-500/50 px-4 py-2 cursor-pointer text-white rounded-sm">
+                Add Product
+              </button>
             </div>
           </form>
         </div>
