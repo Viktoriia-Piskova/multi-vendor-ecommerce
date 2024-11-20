@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { FaEdit, FaEye, FaTrash } from "react-icons/fa";
 import Pagination from "../components/Pagination";
 
-const DiscoundProducts = () => {
+const Orders = () => {
   const dummyOrdersData = [1, 2, 3, 4, 5];
 
   const [perPage, setPerPage] = useState(5);
@@ -14,9 +14,7 @@ const DiscoundProducts = () => {
 
   return (
     <div className="px-2 lg:px-7 pt-5">
-      <h1 className="text-slate-900 font-semibold text-lg mb-5">
-        Discount products
-      </h1>
+      <h1 className="text-slate-900 font-semibold text-lg mb-5">Orders</h1>
       <div className="w-full p-4 bg-est-violet-bright rounded-md">
         <SearchWithDropdown
           setPerPage={setPerPage}
@@ -29,28 +27,16 @@ const DiscoundProducts = () => {
             <thead className="text-sm text-est-light-grey uppercase border-b border-slate-700">
               <tr>
                 <th scope="col" className="py-3 pl-4">
-                  No
-                </th>
-                <th scope="col" className="py-3 pl-4">
-                  Image
-                </th>
-                <th scope="col" className="py-3 pl-4">
-                  Name
-                </th>
-                <th scope="col" className="py-3 pl-4">
-                  Category
-                </th>
-                <th scope="col" className="py-3 pl-4">
-                  Brand
+                  Order ID
                 </th>
                 <th scope="col" className="py-3 pl-4">
                   Price
                 </th>
                 <th scope="col" className="py-3 pl-4">
-                  Discount
+                  Payment Status
                 </th>
                 <th scope="col" className="py-3 pl-4">
-                  Stock
+                  Order Status
                 </th>
                 <th scope="col" className="py-3 pl-4">
                   Action
@@ -63,41 +49,20 @@ const DiscoundProducts = () => {
                   <td className="py-3 px-4 font-medium whitespace-nowrap">
                     {data}
                   </td>
-                  <td className="py-3 px-4 font-medium whitespace-nowrap">
-                    <img
-                      className="h-[45px] w-[45px]"
-                      src={`http://localhost:3000/images/categories/${data}.jpg`}
-                      alt=""
-                    />
-                  </td>
+
                   <td className="py-3 px-4 font-medium whitespace-wrap">
-                    The best Product Ever Name
+                    $5678
                   </td>
                   <td className="py-3 px-4 font-medium whitespace-nowrap">
-                    Sport
+                    Pending
                   </td>
                   <td className="py-3 px-4 font-medium whitespace-nowrap">
-                    Best Brand
-                  </td>
-                  <td className="py-3 px-4 font-medium whitespace-nowrap">
-                    $123
-                  </td>
-                  <td className="py-3 px-4 font-medium whitespace-nowrap">
-                    10%
-                  </td>
-                  <td className="py-3 px-4 font-medium whitespace-nowrap">
-                    CA27
+                    Pending
                   </td>
                   <td className="py-3 px-4 font-medium whitespace-nowrap hover:">
                     <div className="flex justify-start items-center gap-4">
-                      <Link className="transition-all p-[6px] bg-yellow-500 rounded hover:shadow-md hover:shadow-yellow-500/50">
-                        <FaEdit />
-                      </Link>
                       <Link className="transition-all p-[6px] bg-green-500 rounded hover:shadow-md hover:shadow-green-500/50">
                         <FaEye />
-                      </Link>
-                      <Link className="transition-all p-[6px] bg-red-500 rounded hover:shadow-md hover:shadow-red-500/50">
-                        <FaTrash />
                       </Link>
                     </div>
                   </td>
@@ -121,4 +86,4 @@ const DiscoundProducts = () => {
   );
 };
 
-export default DiscoundProducts;
+export default Orders;
