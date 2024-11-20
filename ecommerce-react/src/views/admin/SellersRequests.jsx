@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import SearchWithDropdown from "../components/SearchWithDropdown";
 import { Link } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
-import Pagination from "../Pagination";
+import Pagination from "../components/Pagination";
 
 const SellersRequests = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -13,25 +14,13 @@ const SellersRequests = () => {
 
   return (
     <div className="px-2 lg:px-7 pt-5">
-        <h1 className="text-xl font-bold mb-3">Sellers requests</h1>
-        <div className="w-full p-4 bg-est-violet-bright rounded-md">
-        <div className="flex justify-between items-center">
-          <select
-            onChange={(e) => setPerPage(parseInt(e.target.value))}
-            name=""
-            id=""
-            className="px-4 py-2 hover:cursor-pointer focus:border-indigo-500 transition-all outline-none bg-est-violet-bright border border-slate-700 rounded-md text-est-light-grey"
-          >
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="20">20</option>
-          </select>
-          <input
-            type="text"
-            placeholder="Search"
-            className="px-4 py-2 focus:border-indigo-500 transition-all outline-none rounded-md border border-slate-700 text-est-light-grey bg-est-violet-bright"
-          />
-        </div>
+      <h1 className="text-xl font-bold mb-3">Sellers requests</h1>
+      <div className="w-full p-4 bg-est-violet-bright rounded-md">
+        <SearchWithDropdown
+          setPerPage={setPerPage}
+          setSearchValue={setSearchValue}
+          searchValue={searchValue}
+        />
         <div className="relative overflow-x-auto">
           <table className="w-full text-left">
             <thead className="text-sm text-est-light-grey uppercase border-b border-slate-700">
@@ -58,7 +47,10 @@ const SellersRequests = () => {
             </thead>
             <tbody>
               {dummySellersData.map((data, index) => (
-                <tr key={index} className="text-est-light-grey border-b border-slate-700">
+                <tr
+                  key={index}
+                  className="text-est-light-grey border-b border-slate-700"
+                >
                   <td className="py-3 px-4 font-medium whitespace-nowrap">
                     {data}
                   </td>
@@ -66,7 +58,7 @@ const SellersRequests = () => {
                     Great Seller
                   </td>
                   <td className="py-3 px-4 font-medium whitespace-nowrap">
-                  test@test.com
+                    test@test.com
                   </td>
                   <td className="py-3 px-4 font-medium whitespace-nowrap">
                     Active
@@ -76,7 +68,10 @@ const SellersRequests = () => {
                   </td>
                   <td className="py-3 px-4 font-medium whitespace-nowrap hover:">
                     <div className="flex justify-start items-center gap-4">
-                      <Link to={'/admin/dashboard/seller/details/2'} className="transition-all p-[6px] bg-green-700 rounded hover:shadow-md hover:shadow-green-500/50">
+                      <Link
+                        to={"/admin/dashboard/seller/details/2"}
+                        className="transition-all p-[6px] bg-green-700 rounded hover:shadow-md hover:shadow-green-500/50"
+                      >
                         <FaEye />
                       </Link>
                     </div>

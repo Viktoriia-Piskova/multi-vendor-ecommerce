@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import SearchWithDropdown from "../components/SearchWithDropdown";
 import { Link } from "react-router-dom";
 import { LuArrowDownFromLine } from "react-icons/lu";
 import { IoIosArrowDown } from "react-icons/io";
-import Pagination from "../Pagination";
+import Pagination from "../components/Pagination";
 
 const Orders = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -13,23 +14,11 @@ const Orders = () => {
   return (
     <div className="px-2 lg:px-7 pt-5">
       <div className="w-full p-4 bg-est-violet-bright rounded-md">
-        <div className="flex justify-between items-center">
-          <select
-            onChange={(e) => setPerPage(parseInt(e.target.value))}
-            name=""
-            id=""
-            className="px-4 py-2 hover:cursor-pointer focus:border-indigo-500 transition-all outline-none bg-est-violet-bright border border-slate-700 rounded-md text-est-light-grey"
-          >
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="20">20</option>
-          </select>
-          <input
-            type="text"
-            placeholder="Search"
-            className="px-4 py-2 focus:border-indigo-500 transition-all outline-none rounded-md border border-slate-700 text-est-light-grey bg-est-violet-bright"
-          />
-        </div>
+        <SearchWithDropdown
+          setPerPage={setPerPage}
+          setSearchValue={setSearchValue}
+          searchValue={searchValue}
+        />
 
         <div className="relative mt-5 overflow-x-auto">
           <div className="w-full text-sm text-left bg-est-violet-bright">
@@ -54,7 +43,7 @@ const Orders = () => {
                 <div className="py-3 w-[18%] font-medium">Pending</div>
                 <div className="py-3 w-[18%] font-medium">Pending</div>
                 <div className="py-3 w-[18%] font-medium">
-                  <Link to='/admin/dashboard/order/details/3'>View</Link>
+                  <Link to="/admin/dashboard/order/details/3">View</Link>
                 </div>
                 <div className="py-3 w-[8%] font-medium">
                   <IoIosArrowDown
