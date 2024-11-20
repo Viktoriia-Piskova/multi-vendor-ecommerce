@@ -98,7 +98,7 @@ const AddProduct = () => {
           <h1 className="text-est-light-grey text-xl font-semibold">
             Add product
           </h1>
-          <Link className="bg-blue-500 text-white rounded-sm px-7 py-2 my-2 hover:shadow-blue-500/50 hover:shadow-lg">
+          <Link to='/seller/dashboard/all-products' className="bg-blue-500 text-white rounded-sm px-7 py-2 my-2 hover:shadow-blue-500/50 hover:shadow-lg">
             All Products
           </Link>
         </div>
