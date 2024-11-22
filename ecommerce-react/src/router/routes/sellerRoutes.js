@@ -16,6 +16,9 @@ const ChatSellerToAdmin = lazy(() =>
 const ChatSellerToCustomer = lazy(() =>
   import("../../views/seller/ChatSellerToCustomer")
 );
+const Profile = lazy(() =>
+  import("../../views/seller/Profile")
+);
 
 export const sellerRoutes = [
   {
@@ -74,6 +77,12 @@ export const sellerRoutes = [
   {
     path: "/seller/dashboard/chat-support",
     element: <ChatSellerToAdmin />,
+    role: "seller",
+    ability: ["active", "inactive", "pending"],
+  },
+  {
+    path: "/seller/dashboard/profile",
+    element: <Profile />,
     role: "seller",
     ability: ["active", "inactive", "pending"],
   },
