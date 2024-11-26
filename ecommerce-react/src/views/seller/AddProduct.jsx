@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import RedButton from "../components/ui/RedButton";
 import { Link } from "react-router-dom";
 import { IoMdImages } from "react-icons/io";
 import { IoMdCloseCircle } from "react-icons/io";
@@ -91,6 +92,11 @@ const AddProduct = () => {
     setImagesUrls(filteredImagesUrls);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("handleSubmit");
+  };
+
   return (
     <div className="px-2 lg:px-7 pt-5 ">
       <div className="w-full p-4 bg-est-violet-bright rounded-md">
@@ -98,7 +104,10 @@ const AddProduct = () => {
           <h1 className="text-est-light-grey text-xl font-semibold">
             Add product
           </h1>
-          <Link to='/seller/dashboard/all-products' className="bg-blue-500 text-white rounded-sm px-7 py-2 my-2 hover:shadow-blue-500/50 hover:shadow-lg">
+          <Link
+            to="/seller/dashboard/all-products"
+            className="bg-blue-500 text-white rounded-sm px-7 py-2 my-2 hover:shadow-blue-500/50 hover:shadow-lg"
+          >
             All Products
           </Link>
         </div>
@@ -275,9 +284,9 @@ const AddProduct = () => {
               </label>
             </div>
             <div className="flex pt-5">
-              <button className="bg-red-500 shadow-lg hover:shadow-red-500/50 px-4 py-2 cursor-pointer text-white rounded-sm">
+              <RedButton handleClick={(e) => handleSubmit(e)}>
                 Add Product
-              </button>
+              </RedButton>
             </div>
           </form>
         </div>

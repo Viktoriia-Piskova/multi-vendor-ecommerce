@@ -2,6 +2,7 @@ import React from "react";
 import { IoMdImages } from "react-icons/io";
 import { FadeLoader } from "react-spinners";
 import { FaEdit } from "react-icons/fa";
+import RedButton from "../components/ui/RedButton";
 
 const Profile = () => {
   const image = true;
@@ -142,9 +143,7 @@ const Profile = () => {
                     placeholder="Subdistrict name"
                     className="w-full px-4 py-2 focus:border-est-light-grey transition-all outline-none rounded-md border border-slate-700 text-est-light-grey bg-est-violet-bright"
                   />
-                  <button className="bg-red-500 mt-3 shadow-lg hover:shadow-red-500/50 px-4 py-2 cursor-pointer text-white rounded-sm">
-                    Save changes
-                  </button>
+                  <RedButton>Save changes</RedButton>
                 </form>
               ) : (
                 <div className="flex justify-between text-sm flex-col gap-2 p-4 bg-est-gray-meduim rounded-md relative">
@@ -207,9 +206,7 @@ const Profile = () => {
                 placeholder="New password"
                 className="w-full px-4 py-2 focus:border-est-light-grey transition-all outline-none rounded-md border border-slate-700 text-est-light-grey bg-est-violet-bright"
               />
-              <button className="bg-red-500 mt-3 shadow-lg hover:shadow-red-500/50 px-4 py-2 cursor-pointer text-white rounded-sm">
-                Save changes
-              </button>
+              <RedButton>Save changes</RedButton>
             </form>
           </div>
         </div>

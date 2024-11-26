@@ -1,4 +1,5 @@
 import React, { forwardRef } from "react";
+import RedButton from "../components/ui/RedButton";
 import { MdCurrencyExchange } from "react-icons/md";
 import { FixedSizeList } from "react-window";
 
@@ -23,6 +24,11 @@ const Payments = () => {
         <div className="w-[25%] p-2 whitespace-nowrap">25 Oct 2024</div>
       </div>
     );
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("handleSubmit");
   };
 
   return (
@@ -77,9 +83,9 @@ const Payments = () => {
                   min="0"
                   className="px-3 py-2 focus:border-indigo-200 transition-all outline-none rounded-md border border-slate-700 text-est-light-grey bg-est-violet-bright md:w-[79%]"
                 />
-                <button className="bg-red-500 shadow-lg hover:shadow-red-500/50 px-4 py-2 cursor-pointer text-white rounded-sm">
+                <RedButton handleClick={(e) => handleSubmit(e)}>
                   Submit
-                </button>
+                </RedButton>
               </div>
             </form>
           </div>

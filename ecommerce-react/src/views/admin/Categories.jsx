@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FaEdit, FaImage, FaTrash } from "react-icons/fa";
 import { IoMdCloseCircle } from "react-icons/io";
 import Pagination from "../components/Pagination";
+import RedButton from "../components/ui/RedButton";
 
 const Categories = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -13,21 +14,25 @@ const Categories = () => {
 
   const dummyOrdersData = [1, 2, 3, 4, 5];
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("handleSubmit");
+  };
+
   return (
     <div className="px-2 lg:px-7 pt-5">
       <div className="flex lg:hidden justify-between items-center mb-5 p-4 bg-est-violet-bright rounded-md">
         <h1 className="text-est-light-grey font-semibold text-lg">Category</h1>
-        <button
-          onClick={() => setShowDetails(true)}
-          className="bg-red-500 shadow-lg hover:shadow-red-500/50 px-4 py-2 cursor-pointer text-white rounded-sm"
-        >
-          Add
-        </button>
+        <RedButton handleClick={() => setShowDetails(true)}>Add</RedButton>
       </div>
       <div className="flex flex-wrap w-full">
         <div className="w-full lg:w-7/12">
           <div className="w-full p-4 bg-est-violet-bright rounded-md">
-            <SearchWithDropdown setPerPage={setPerPage} setSearchValue={setSearchValue} searchValue={searchValue}/>
+            <SearchWithDropdown
+              setPerPage={setPerPage}
+              setSearchValue={setSearchValue}
+              searchValue={searchValue}
+            />
             <div className="relative overflow-x-auto">
               <table className="w-full text-left">
                 <thead className="text-sm text-est-light-grey uppercase border-b border-slate-700">
@@ -138,9 +143,9 @@ const Categories = () => {
                   />
                 </div>
                 <div>
-                  <button className="bg-red-500 w-full hover:shadow-red-500/40 hover:shadow-lg rounded-md px-7 py-2 my-2">
-                    Add category
-                  </button>
+                  <RedButton handleClick={(e) => handleSubmit(e)} additionalClass="w-full my-2">
+                  Add category
+                </RedButton>
                 </div>
               </form>
             </div>
