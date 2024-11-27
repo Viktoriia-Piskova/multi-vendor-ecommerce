@@ -3,6 +3,7 @@ import RedButton from "../components/ui/RedButton";
 import { Link } from "react-router-dom";
 import { IoMdImages } from "react-icons/io";
 import { IoMdCloseCircle } from "react-icons/io";
+import InputWithLabel from "../components/ui/InputWithLabel";
 
 const AddProduct = () => {
   const [formData, setFormData] = useState({
@@ -114,30 +115,26 @@ const AddProduct = () => {
         <div>
           <form>
             <div className="flex flex-col mb-3 md:flex-row gap-4 w-full text-est-light-grey">
-              <div className="flex flex-col w-full gap-1">
-                <label htmlFor="name">Product name</label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Product name"
-                  onChange={(e) => handleInput(e)}
-                  value={formData.name || ""}
-                  className="px-4 py-2 focus:border-indigo-500 transition-all outline-none rounded-md border border-slate-700 text-est-light-grey bg-est-violet-bright"
-                />
-              </div>
-              <div className="flex flex-col w-full gap-1">
-                <label htmlFor="brand">Product brand</label>
-                <input
-                  type="text"
-                  name="brand"
-                  id="brand"
-                  placeholder="Brand name"
-                  onChange={(e) => handleInput(e)}
-                  value={formData.brand || ""}
-                  className="px-4 py-2 focus:border-indigo-500 transition-all outline-none rounded-md border border-slate-700 text-est-light-grey bg-est-violet-bright"
-                />
-              </div>
+              <InputWithLabel
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Product name"
+                onChange={(e) => handleInput(e)}
+                value={formData.name || ""}
+                label="Product name"
+                additionalLabelClass="mb-0"
+              />
+              <InputWithLabel
+                type="text"
+                name="brand"
+                id="brand"
+                placeholder="Brand brand"
+                onChange={(e) => handleInput(e)}
+                value={formData.brand || ""}
+                label="Product brand"
+                additionalLabelClass="mb-0"
+              />
             </div>
             <div className="flex flex-col mb-3 md:flex-row gap-4 w-full text-est-light-grey">
               <div className="flex flex-col w-full gap-1 relative">
@@ -187,58 +184,51 @@ const AddProduct = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col w-full gap-1">
-                <label htmlFor="stock">Product stock</label>
-                <input
-                  type="text"
-                  name="stock"
-                  id="stock"
-                  placeholder="Stock name"
-                  onChange={(e) => handleInput(e)}
-                  value={formData.brand || ""}
-                  className="px-4 py-2 focus:border-indigo-500 transition-all outline-none rounded-md border border-slate-700 text-est-light-grey bg-est-violet-bright"
-                />
-              </div>
+              <InputWithLabel
+                type="text"
+                name="stock"
+                id="stock"
+                placeholder="Stock name"
+                onChange={(e) => handleInput(e)}
+                value={formData.stock || ""}
+                label="Product stock"
+                additionalLabelClass="mb-0"
+              />
             </div>
             <div className="flex flex-col mb-3 md:flex-row gap-4 w-full text-est-light-grey">
-              <div className="flex flex-col w-full gap-1">
-                <label htmlFor="price">Price</label>
-                <input
-                  type="number"
-                  name="price"
-                  id="price"
-                  placeholder="$"
-                  onChange={(e) => handleInput(e)}
-                  value={formData.price || ""}
-                  className="px-4 py-2 focus:border-indigo-500 transition-all outline-none rounded-md border border-slate-700 text-est-light-grey bg-est-violet-bright"
-                />
-              </div>
-              <div className="flex flex-col w-full gap-1">
-                <label htmlFor="discount">Discount</label>
-                <input
-                  type="number"
-                  name="discount"
-                  id="discount"
-                  placeholder="%"
-                  onChange={(e) => handleInput(e)}
-                  value={formData.discount || ""}
-                  className="px-4 py-2 focus:border-indigo-500 transition-all outline-none rounded-md border border-slate-700 text-est-light-grey bg-est-violet-bright"
-                />
-              </div>
-            </div>
-            <div className="flex flex-col w-full gap-1 text-est-light-grey">
-              <label htmlFor="description">Description</label>
-              <textarea
-                name="description"
-                id="description"
-                cols="10"
-                rows="4"
-                placeholder="Product description"
+              <InputWithLabel
+                type="number"
+                name="price"
+                id="price"
+                placeholder="$"
                 onChange={(e) => handleInput(e)}
-                value={formData.description || ""}
-                className="px-4 py-2 focus:border-indigo-500 transition-all outline-none rounded-md border border-slate-700 text-est-light-grey bg-est-violet-bright"
-              ></textarea>
+                value={formData.price || ""}
+                label="Price"
+                additionalLabelClass="mb-0"
+              />
+              <InputWithLabel
+                type="number"
+                name="discount"
+                id="discount"
+                placeholder="%"
+                onChange={(e) => handleInput(e)}
+                value={formData.discount || ""}
+                label="Discount"
+                additionalLabelClass="mb-0"
+              />
             </div>
+            <InputWithLabel
+              type="textarea"
+              name="description"
+              id="description"
+              cols="10"
+              rows="4"
+              placeholder="Product description"
+              onChange={(e) => handleInput(e)}
+              value={formData.description || ""}
+              label="Description"
+              additionalLabelClass="mb-0"
+            />
             <div className="w-full mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 lg:grid-cols-4 text-est-light-grey">
               {imagesUrls.map((img, i) => (
                 <div className="h-[180px] relative" key={i}>

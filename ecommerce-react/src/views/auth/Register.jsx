@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
+import InputWithLabel from "../components/ui/InputWithLabel";
 
 const Register = () => {
   const [formState, setFormState] = useState({
@@ -11,7 +12,7 @@ const Register = () => {
   });
 
   const handleInputChange = (e) => {
-    setFormState({...formState, [e.target.name]: e.target.value});
+    setFormState({ ...formState, [e.target.name]: e.target.value });
   };
 
   const handleFormSubmit = (e) => {
@@ -31,42 +32,42 @@ const Register = () => {
               handleFormSubmit(e);
             }}
           >
-            <div className="flex flex-col w-full gap-1 mb-3">
-              <label htmlFor="name">Name</label>
-              <input
-                onChange={(e) => handleInputChange(e)}
-                className="px-3 py-2 outline-none border border-slate-400 bg-transparent rounded-md"
-                type="text"
-                name="name"
-                placeholder="Name"
-                id="name"
-                required
-              />
-            </div>
-            <div className="flex flex-col w-full gap-1 mb-3">
-              <label htmlFor="email">Email</label>
-              <input
-                onChange={(e) => handleInputChange(e)}
-                className="px-3 py-2 outline-none border border-slate-400 bg-transparent rounded-md"
-                type="email"
-                name="email"
-                placeholder="Email"
-                id="email"
-                required
-              />
-            </div>
-            <div className="flex flex-col w-full gap-1 mb-3">
-              <label htmlFor="password">Password</label>
-              <input
-                onChange={(e) => handleInputChange(e)}
-                className="px-3 py-2 outline-none border border-slate-400 bg-transparent rounded-md"
-                type="password"
-                name="password"
-                placeholder="Password"
-                id="password"
-                required
-              />
-            </div>
+            <InputWithLabel
+              onChange={(e) => handleInputChange(e)}
+              type="text"
+              name="name"
+              placeholder="Name"
+              id="name"
+              label="Name"
+              required={true}
+              additionalInputClass={
+                "bg-transparent border-slate-300 focus:border-slate-100"
+              }
+            />
+            <InputWithLabel
+              onChange={(e) => handleInputChange(e)}
+              type="email"
+              name="email"
+              placeholder="Email"
+              id="email"
+              required={true}
+              label="Email"
+              additionalInputClass={
+                "bg-transparent border-slate-300 focus:border-slate-100"
+              }
+            />
+            <InputWithLabel
+              onChange={(e) => handleInputChange(e)}
+              type="password"
+              name="password"
+              placeholder="Password"
+              id="password"
+              required={true}
+              label="Password"
+              additionalInputClass={
+                "bg-transparent border-slate-300 focus:border-slate-100"
+              }
+            />
             <div className="flex items-center w-full gap-3 mb-3">
               <input
                 className="w-4 h-4 text-blue-600 overflow-hidden bg-gray-200 rounded border-gray-300 focus:ring-blue-500"

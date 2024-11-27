@@ -4,6 +4,7 @@ import { admin_login, clearMessage } from "../../store/Reducers/authReducer";
 import { PropagateLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import InputWithLabel from "../components/ui/InputWithLabel";
 
 const AdminLogin = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ const AdminLogin = () => {
     if (successMessage) {
       toast.success(successMessage);
       dispatch(clearMessage());
-      navigate('/')
+      navigate("/");
     }
   }, [errorMessage, successMessage]);
 
@@ -60,30 +61,26 @@ const AdminLogin = () => {
             </div>
           </div>
           <form onSubmit={(e) => handleFormSubmit(e)}>
-            <div className="flex flex-col w-full gap-1 mb-3">
-              <label htmlFor="email">Email</label>
-              <input
-                onChange={(e) => handleInputChange(e)}
-                className="px-3 py-2 outline-none border border-slate-400 bg-transparent rounded-md"
-                type="email"
-                name="email"
-                placeholder="Email"
-                id="email"
-                required
-              />
-            </div>
-            <div className="flex flex-col w-full gap-1 mb-3">
-              <label htmlFor="password">Password</label>
-              <input
-                onChange={(e) => handleInputChange(e)}
-                className="px-3 py-2 outline-none border border-slate-400 bg-transparent rounded-md"
-                type="password"
-                name="password"
-                placeholder="Password"
-                id="password"
-                required
-              />
-            </div>
+            <InputWithLabel
+              label="Email"
+              type="email"
+              name="email"
+              placeholder="Email"
+              id="email"
+              onChange={(e) => handleInputChange(e)}
+              required={true}
+              additionalInputClass="bg-transparent"
+            />
+            <InputWithLabel
+              type="password"
+              label="Password"
+              name="password"
+              placeholder="Password"
+              id="password"
+              additionalInputClass="bg-transparent"
+              required={true}
+              onChange={(e) => handleInputChange(e)}
+            />
             <button
               disabled={loader}
               className="bg-slate-800 w-full hover:shadow-blue-300/50 hover:shadow-md text-white rounded-md px-7 py-2 mb-3 transition-all duration-300 ease-in-out disabled:opacity-70"

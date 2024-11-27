@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const ChatSellerToAdmin = () => {
 
   return (
-    <div className="px-2 lg:px-7 pt-5">
+    <div className="est-container">
       <div className="w-full p-4 bg-est-violet-bright rounded-md h-[calc(100vh-140px)]">
         <div className="flex w-full h-full relative">
           <div className="w-full md:pl-4 p-2">

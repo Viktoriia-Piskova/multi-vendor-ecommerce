@@ -3,6 +3,7 @@ import { IoMdImages } from "react-icons/io";
 import { FadeLoader } from "react-spinners";
 import { FaEdit } from "react-icons/fa";
 import RedButton from "../components/ui/RedButton";
+import InputWithLabel from "../components/ui/InputWithLabel";
 
 const Profile = () => {
   const image = true;
@@ -102,46 +103,33 @@ const Profile = () => {
             <div className="px-0 md:px-5 py-2">
               {!userInfo ? (
                 <form>
-                  <label className="block w-full my-2" htmlFor="shop">
-                    Shop name
-                  </label>
-                  <input
+                  <InputWithLabel
+                    label="Shop name"
                     type="text"
                     name="shop"
                     id="shop"
                     placeholder="Shop name"
-                    className="w-full px-4 py-2 focus:border-est-light-grey transition-all outline-none rounded-md border border-slate-700 text-est-light-grey bg-est-violet-bright"
                   />
-
-                  <label className="block w-full my-2" htmlFor="division">
-                    Division
-                  </label>
-                  <input
+                  <InputWithLabel
+                    label="Division"
                     type="text"
                     name="division"
                     id="division"
                     placeholder="Division name"
-                    className="w-full px-4 py-2 focus:border-est-light-grey transition-all outline-none rounded-md border border-slate-700 text-est-light-grey bg-est-violet-bright"
                   />
-                  <label className="block w-full my-2" htmlFor="district">
-                    District
-                  </label>
-                  <input
+                  <InputWithLabel
                     type="text"
                     name="district"
                     id="district"
-                    placeholder="District name"
-                    className="w-full px-4 py-2 focus:border-est-light-grey transition-all outline-none rounded-md border border-slate-700 text-est-light-grey bg-est-violet-bright"
+                    placeholder="District"
+                    label="Division"
                   />
-                  <label className="block w-full my-2" htmlFor="district">
-                    Subdistrict
-                  </label>
-                  <input
+                  <InputWithLabel
                     type="text"
                     name="subdistrict"
                     id="subdistrict"
                     placeholder="Subdistrict name"
-                    className="w-full px-4 py-2 focus:border-est-light-grey transition-all outline-none rounded-md border border-slate-700 text-est-light-grey bg-est-violet-bright"
+                    label="Subdistrict"
                   />
                   <RedButton>Save changes</RedButton>
                 </form>
@@ -175,36 +163,27 @@ const Profile = () => {
           <div className="w-full pl-0 md:pl-7 mt-6 md:mt-0 bg-est-violet-bright rounded-md text-est-light-grey p-4">
             <h1 className="text-lg mb-3 font-semibold">Change password</h1>
             <form>
-              <label className="block w-full my-2" htmlFor="email">
-                Email
-              </label>
-              <input
+              <InputWithLabel
                 type="email"
                 name="email"
                 id="email"
                 placeholder="Email"
-                className="w-full px-4 py-2 focus:border-est-light-grey transition-all outline-none rounded-md border border-slate-700 text-est-light-grey bg-est-violet-bright"
+                label="Email"
               />
 
-              <label className="block w-full my-2" htmlFor="pass_old">
-                Old passsword
-              </label>
-              <input
+              <InputWithLabel
                 type="password"
                 name="pass_old"
                 id="pass_old"
                 placeholder="Old passsword"
-                className="w-full px-4 py-2 focus:border-est-light-grey transition-all outline-none rounded-md border border-slate-700 text-est-light-grey bg-est-violet-bright"
+                label="Old passsword"
               />
-              <label className="block w-full my-2" htmlFor="pass_new">
-                New password
-              </label>
-              <input
+              <InputWithLabel
                 type="password"
                 name="pass_new"
                 id="pass_new"
                 placeholder="New password"
-                className="w-full px-4 py-2 focus:border-est-light-grey transition-all outline-none rounded-md border border-slate-700 text-est-light-grey bg-est-violet-bright"
+                label="New passsword"
               />
               <RedButton>Save changes</RedButton>
             </form>

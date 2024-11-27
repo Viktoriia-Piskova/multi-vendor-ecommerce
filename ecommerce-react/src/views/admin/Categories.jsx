@@ -5,6 +5,7 @@ import { FaEdit, FaImage, FaTrash } from "react-icons/fa";
 import { IoMdCloseCircle } from "react-icons/io";
 import Pagination from "../components/Pagination";
 import RedButton from "../components/ui/RedButton";
+import InputWithLabel from "../components/ui/InputWithLabel";
 
 const Categories = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -113,18 +114,14 @@ const Categories = () => {
                 </div>
               </div>
               <form>
-                <div className="flex flex-col w-full gap-1 mb-3">
-                  <label htmlFor="name" className="mb-2 text-est-light-grey">
-                    Category name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="category_name"
-                    placeholder="Category name"
-                    className="px-4 py-2 focus:border-indigo-500 transition-all outline-none rounded-md border border-slate-700 text-slate-950 bg-white"
-                  />
-                </div>
+                <InputWithLabel
+                  label="Category name"
+                  type="text"
+                  id="name"
+                  name="category_name"
+                  placeholder="Category name"
+                  additionalInputClass="bg-white"
+                />
                 <div>
                   <label
                     htmlFor="image"
@@ -143,9 +140,12 @@ const Categories = () => {
                   />
                 </div>
                 <div>
-                  <RedButton handleClick={(e) => handleSubmit(e)} additionalClass="w-full my-2">
-                  Add category
-                </RedButton>
+                  <RedButton
+                    handleClick={(e) => handleSubmit(e)}
+                    additionalClass="w-full my-2"
+                  >
+                    Add category
+                  </RedButton>
                 </div>
               </form>
             </div>

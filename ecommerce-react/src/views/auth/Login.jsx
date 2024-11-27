@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
+import InputWithLabel from "../components/ui/InputWithLabel";
 
 const Login = () => {
   const [formState, setFormState] = useState({
@@ -25,30 +26,30 @@ const Login = () => {
           <h2 className="text-xl mb-3 font-bold">Welcome to Ecommerce</h2>
           <p className="text-sm mb-3 font-medium">Please log in</p>
           <form onSubmit={(e) => handleFormSubmit(e)}>
-            <div className="flex flex-col w-full gap-1 mb-3">
-              <label htmlFor="email">Email</label>
-              <input
-                onChange={(e) => handleInputChange(e)}
-                className="px-3 py-2 outline-none border border-slate-400 bg-transparent rounded-md"
-                type="email"
-                name="email"
-                placeholder="Email"
-                id="email"
-                required
-              />
-            </div>
-            <div className="flex flex-col w-full gap-1 mb-3">
-              <label htmlFor="password">Password</label>
-              <input
-                onChange={(e) => handleInputChange(e)}
-                className="px-3 py-2 outline-none border border-slate-400 bg-transparent rounded-md"
-                type="password"
-                name="password"
-                placeholder="Password"
-                id="password"
-                required
-              />
-            </div>
+            <InputWithLabel
+              onChange={(e) => handleInputChange(e)}
+              type="email"
+              name="email"
+              placeholder="Email"
+              label="Email"
+              id="email"
+              required={true}
+              additionalInputClass={
+                "bg-transparent border-slate-400 focus:border-slate-200"
+              }
+            />
+            <InputWithLabel
+              onChange={(e) => handleInputChange(e)}
+              type="password"
+              name="password"
+              placeholder="Password"
+              label="Password"
+              id="password"
+              required={true}
+              additionalInputClass={
+                "bg-transparent border-slate-400 focus:border-slate-200"
+              }
+            />
             <button className="bg-slate-800 w-full hover:shadow-blue-300/50 hover:shadow-md text-white rounded-md px-7 py-2 mb-3 transition-all duration-300 ease-in-out">
               Log in
             </button>
