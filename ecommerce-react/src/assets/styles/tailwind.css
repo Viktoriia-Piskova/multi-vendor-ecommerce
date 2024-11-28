@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .est-container {
+    @apply px-2 lg:px-7 pt-5;
+  }
+
+  .est-container-violet {
+    @apply w-full p-4 bg-est-violet-bright rounded-md;
+  }
+}

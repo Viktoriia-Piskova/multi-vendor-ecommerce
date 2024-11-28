@@ -15,7 +15,7 @@ const Profile = () => {
     <div className="px-2 lg:px-7 py-5">
       <div className="w-full flex flex-wrap gap-3">
         <div className="w-full md:w-6/12">
-          <div className="w-full p-4 bg-est-violet-bright rounded-md text-est-light-grey">
+          <div className="est-container-violet text-est-light-grey">
             <div className="flex justify-center items-center py-3">
               {image ? (
                 <label
@@ -160,7 +160,7 @@ const Profile = () => {
           </div>
         </div>
         <div className="w-full md:w-5/12">
-          <div className="w-full pl-0 md:pl-7 mt-6 md:mt-0 bg-est-violet-bright rounded-md text-est-light-grey p-4">
+          <div className="est-container-violet pl-0 md:pl-7 mt-6 md:mt-0 text-est-light-grey">
             <h1 className="text-lg mb-3 font-semibold">Change password</h1>
             <form>
               <InputWithLabel

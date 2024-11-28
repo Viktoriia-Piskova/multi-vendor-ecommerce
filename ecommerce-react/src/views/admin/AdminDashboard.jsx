@@ -138,7 +138,7 @@ const AdminDashboard = () => {
 
       <div className="w-full flex flex-wrap mt-7">
         <div className="w-full lg:w-7/12 lg:pr-3">
-          <div className="w-full bg-est-violet-bright p-4 rounded-md">
+          <div className="est-container-violet">
             <Chart
               options={statsState.options}
               series={statsState.series}
@@ -149,7 +149,7 @@ const AdminDashboard = () => {
         </div>
 
         <div className="w-full lg:w-5/12 lg:pl-4 mt-6 lg:mt-0">
-          <div className="w-full bg-est-violet-bright p-4 rounded-md text-est-light-grey">
+          <div className="est-container-violet text-est-light-grey">
             <div className="flex justify-between items-baseline">
               <h2 className="font-semibold text-lg text-est-light-grey pb-3">
                 Resent seller message
@@ -206,7 +206,7 @@ const AdminDashboard = () => {
         </div>
       </div>
 
-      <div className="w-full p-4 bg-est-violet-bright rounded-md mt-6">
+      <div className="est-container-violet mt-6">
         <div className="flex justify-between items-baseline">
           <h2 className="font-semibold text-lg text-est-light-grey pb-3">
             Resent orders

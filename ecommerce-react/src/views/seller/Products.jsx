@@ -13,11 +13,11 @@ const Products = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   return (
-    <div className="px-2 lg:px-7 pt-5">
+    <div className="est-container">
       <h1 className="text-slate-900 font-semibold text-lg mb-5">
         All products
       </h1>
-      <div className="w-full p-4 bg-est-violet-bright rounded-md">
+      <div className="est-container-violet">
         <SearchWithDropdown
           setPerPage={setPerPage}
           setSearchValue={setSearchValue}

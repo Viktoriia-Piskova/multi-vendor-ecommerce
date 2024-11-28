@@ -32,8 +32,8 @@ const PaymentRequests = () => {
   };
 
   return (
-    <div className="px-2 lg:px-7 pt-5">
-      <div className="w-full p-4 bg-est-violet-bright rounded-md">
+    <div className="est-container">
+      <div className="est-container-violet">
         <h2 className="text-est-light-grey text-xl font-medium pb-5">
           Withdrawal Request
         </h2>

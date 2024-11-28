@@ -12,9 +12,9 @@ const Sellers = () => {
 
   const dummyOrdersData = [1, 2, 3, 4, 5];
   return (
-    <div className="px-2 lg:px-7 pt-5">
+    <div className="est-container">
       <h1 className="text-xl font-bold mb-3">Sellers</h1>
-      <div className="w-full p-4 bg-est-violet-bright rounded-md">
+      <div className="est-container-violet">
         <SearchWithDropdown
           setPerPage={setPerPage}
           setSearchValue={setSearchValue}

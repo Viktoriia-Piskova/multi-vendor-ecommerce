@@ -99,8 +99,8 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="px-2 lg:px-7 pt-5 ">
-      <div className="w-full p-4 bg-est-violet-bright rounded-md">
+    <div className="est-container">
+      <div className="est-container-violet">
         <div className="flex justify-between items-center pb-4">
           <h1 className="text-est-light-grey text-xl font-semibold">
             Add product

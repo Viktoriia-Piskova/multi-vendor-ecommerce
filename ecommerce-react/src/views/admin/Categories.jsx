@@ -21,14 +21,14 @@ const Categories = () => {
   };
 
   return (
-    <div className="px-2 lg:px-7 pt-5">
-      <div className="flex lg:hidden justify-between items-center mb-5 p-4 bg-est-violet-bright rounded-md">
+    <div className="est-container">
+      <div className="est-container-violet flex lg:hidden justify-between items-center mb-5">
         <h1 className="text-est-light-grey font-semibold text-lg">Category</h1>
         <RedButton handleClick={() => setShowDetails(true)}>Add</RedButton>
       </div>
       <div className="flex flex-wrap w-full">
         <div className="w-full lg:w-7/12">
-          <div className="w-full p-4 bg-est-violet-bright rounded-md">
+          <div className="est-container-violet">
             <SearchWithDropdown
               setPerPage={setPerPage}
               setSearchValue={setSearchValue}

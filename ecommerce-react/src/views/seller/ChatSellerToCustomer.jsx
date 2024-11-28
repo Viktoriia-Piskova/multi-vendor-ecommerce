@@ -7,8 +7,8 @@ const ChatSellerToCustomer = () => {
   const sellerId = 2;
 
   return (
-    <div className="px-2 lg:px-7 pt-5">
-      <div className="w-full p-4 bg-est-violet-bright rounded-md h-[calc(100vh-140px)]">
+    <div className="est-container">
+      <div className="est-container-violet h-[calc(100vh-140px)]">
         <div className="flex w-full h-full relative">
           <div
             className={`w-[280px] h-full absolute z-10 ${

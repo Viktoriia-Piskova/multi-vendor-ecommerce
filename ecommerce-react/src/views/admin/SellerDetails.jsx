@@ -8,9 +8,9 @@ const SellerDetails = () => {
   };
 
   return (
-    <div className="px-2 lg:px-7 pt-5">
+    <div className="est-container">
       <h1 className="text-xl font-bold mb-3">Sellers details</h1>
-      <div className="w-full p-4 bg-est-violet-bright rounded-md">
+      <div className="est-container-violet">
         <div className="w-full flex flex-wrap text-est-light-grey justify-between items-center">
           <div className="w-3/12 flex justify-center items-center py-3">
             <div>

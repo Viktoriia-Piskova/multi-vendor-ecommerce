@@ -12,8 +12,8 @@ const Orders = () => {
   const [showDetails, setShowDetails] = useState(true);
 
   return (
-    <div className="px-2 lg:px-7 pt-5">
-      <div className="w-full p-4 bg-est-violet-bright rounded-md">
+    <div className="est-container">
+      <div className="est-container-violet">
         <SearchWithDropdown
           setPerPage={setPerPage}
           setSearchValue={setSearchValue}

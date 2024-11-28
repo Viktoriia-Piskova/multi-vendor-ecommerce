@@ -72,7 +72,7 @@ const Payments = () => {
         </div>
       </div>
       <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2 pt-4">
-        <div className="bg-est-violet-bright rounded-md text-est-light-grey p-5">
+        <div className="est-container-violet text-est-light-grey">
           <h2 className="text-lg">Send request</h2>
           <div className="pt-5">
             <form>
@@ -113,7 +113,7 @@ const Payments = () => {
             </div>
           </div>
         </div>
-        <div className="bg-est-violet-bright rounded-md text-est-light-grey p-5">
+        <div className="est-container-violet text-est-light-grey">
           <div>
             <h3 className="text-lg pb-4">Success Withdrawals</h3>
             <div className="w-full overflow-x-auto">

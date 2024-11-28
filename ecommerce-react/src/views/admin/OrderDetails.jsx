@@ -2,8 +2,8 @@ import React from "react";
 
 const OrderDetails = () => {
   return (
-    <div className="px-2 lg:px-7 pt-5">
-      <div className="w-full p-4 bg-est-violet-bright rounded-md">
+    <div className="est-container">
+      <div className="est-container-violet">
         <div className="flex justify-between items-center p-4">
           <h2 className="text-xl text-est-light-grey">Order Details</h2>
           <select
