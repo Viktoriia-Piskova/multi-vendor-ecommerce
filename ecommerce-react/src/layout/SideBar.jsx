@@ -14,8 +14,6 @@ const SideBar = ({ showSidebar, setShowSidebar }) => {
 
   const { pathname } = useLocation();
 
-  console.log(allNav);
-
   return (
     <div>
       <div
