@@ -4,6 +4,7 @@ import Chart from "react-apexcharts";
 import { MdCurrencyExchange, MdProductionQuantityLimits } from "react-icons/md";
 import { FaCartShopping } from "react-icons/fa6";
 import RecentMessages from "../components/ui/RecentMessages";
+import StatsCard from "../components/ui/StatsCard";
 
 const SellerDashboard = () => {
   const dummyOrdersData = [1, 2, 3, 4, 5];
@@ -98,42 +99,38 @@ const SellerDashboard = () => {
   return (
     <div className="px-2 md:px-7 py-5">
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
-        <div className="flex justify-between items-center p-5 bg-[#fae8e8] rounded-md gap-3">
-          <div className="flex flex-col items-start justify-start text-[#5c5a5a]">
-            <h2 className="text-3xl font-bold">$1232</h2>
-            <p className="text-md 1font-medium">Total sales</p>
-          </div>
-          <div className="w-[40px] h-[47px] rounded-full bg-[#fa0305] flex justify-center items-center text-xl">
-            <MdCurrencyExchange className="text-[#fae8e8] shadow-lg" />
-          </div>
-        </div>
-        <div className="flex justify-between items-center p-5 bg-[#fde2ff] rounded-md gap-3">
-          <div className="flex flex-col items-start justify-start text-[#5c5a5a]">
-            <h2 className="text-3xl font-bold">50</h2>
-            <p className="text-md 1font-medium">Products</p>
-          </div>
-          <div className="w-[40px] h-[47px] rounded-full bg-[#760077] flex justify-center items-center text-xl">
-            <MdProductionQuantityLimits className="text-[#fae8e8] shadow-lg" />
-          </div>
-        </div>
-        <div className="flex justify-between items-center p-5 bg-[#e9feea] rounded-md gap-3">
-          <div className="flex flex-col items-start justify-start text-[#5c5a5a]">
-            <h2 className="text-3xl font-bold">32</h2>
-            <p className="text-md 1font-medium">Orders</p>
-          </div>
-          <div className="w-[40px] h-[47px] rounded-full bg-[#038000] flex justify-center items-center text-xl">
-            <FaCartShopping className="text-[#fae8e8] shadow-lg" />
-          </div>
-        </div>
-        <div className="flex justify-between items-center p-5 bg-[#ecebff] rounded-md gap-3">
-          <div className="flex flex-col items-start justify-start text-[#5c5a5a]">
-            <h2 className="text-3xl font-bold">5</h2>
-            <p className="text-md 1font-medium">Pending Orders</p>
-          </div>
-          <div className="w-[40px] h-[47px] rounded-full bg-[#0200f8] flex justify-center items-center text-xl">
-            <FaCartShopping className="text-[#fae8e8] shadow-lg" />
-          </div>
-        </div>
+        <StatsCard
+          backgroundColor={"#fae8e8"}
+          iconColor={"#fa0305"}
+          title="$850"
+          text="Total sales"
+        >
+          <MdCurrencyExchange className="text-[#fae8e8] shadow-lg" />
+        </StatsCard>
+        <StatsCard
+          backgroundColor={"#fde2ff"}
+          iconColor={"#760077"}
+          title="50"
+          text="Products"
+        >
+          <MdProductionQuantityLimits className="text-[#fae8e8] shadow-lg" />
+        </StatsCard>
+        <StatsCard
+          backgroundColor={"#e9feea"}
+          iconColor={"#038000"}
+          title="36"
+          text="Total Orders"
+        >
+          <FaCartShopping className="text-[#fae8e8] shadow-lg" />
+        </StatsCard>
+        <StatsCard
+          backgroundColor={"#ecebff"}
+          iconColor={"#0200f8"}
+          title="5"
+          text="Pending Orders"
+        >
+          <FaCartShopping className="text-[#ecebff] shadow-lg" />
+        </StatsCard>
       </div>
 
       <div className="w-full flex flex-wrap mt-7">
@@ -160,11 +157,11 @@ const SellerDashboard = () => {
             </div>
             <div className="flex flex-col gap-2 pt-6 text-est-light-grey">
               <ol className="relative border-1 border-slate-600 ml-4">
-              <RecentMessages
+                <RecentMessages
                   time="1h ago"
                   text="The latest recent message"
                 />
-              <RecentMessages
+                <RecentMessages
                   time="2 days ago"
                   text="Another latest recent message"
                 />
