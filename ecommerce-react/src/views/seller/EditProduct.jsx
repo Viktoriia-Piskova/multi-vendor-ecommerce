@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import RedButton from "../components/ui/RedButton";
 import { Link } from "react-router-dom";
-import { IoMdImages } from "react-icons/io";
-import { IoMdCloseCircle } from "react-icons/io";
 import InputWithLabel from "../components/ui/InputWithLabel";
+import ImagesUploader from "../components/ImagesUploader";
+import SelectWithSearch from "../components/SelectWithSearch";
 
 const EditProduct = () => {
   const [productData, setProductData] = useState({
@@ -28,28 +28,13 @@ const EditProduct = () => {
     },
   ];
 
-  const [сategory, setCategory] = useState("");
-  const [showCategories, setShowCategories] = useState(false);
+  const [category, setCategory] = useState("");
   const [allCategories, setAllCategories] = useState(categories);
-  const [searchValue, setSearchValue] = useState("");
   const [images, setImages] = useState([]);
   const [imagesUrls, setImagesUrls] = useState([]);
 
   const handleInput = (e) => {
     setProductData({ ...productData, [e.target.name]: e.target.value });
-  };
-
-  const handleCategorySearch = (e) => {
-    const searchTerm = e.target.value;
-    setSearchValue(searchTerm);
-    if (searchTerm) {
-      let searchResults = allCategories.filter(
-        (c) => c.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
-      );
-      setAllCategories(searchResults);
-    } else {
-      setAllCategories(categories);
-    }
   };
 
   const handleImage = (e) => {
@@ -109,8 +94,15 @@ const EditProduct = () => {
       stock: "Cherkasy",
     });
     setCategory({ id: 1, name: "Sport" });
-    setImagesUrls([{url: "http://localhost:3000/images/categories/2.jpg"}])
+    setImagesUrls([{ url: "http://localhost:3000/images/categories/2.jpg" }]);
   }, []);
+
+  useEffect(() => {
+    if (category.name) {
+      const fakeEvent = { target: { name: "category", value: category.name } };
+      handleInput(fakeEvent);
+    }
+  }, [category]);
 
   return (
     <div className="est-container">
@@ -151,53 +143,14 @@ const EditProduct = () => {
               />
             </div>
             <div className="flex flex-col mb-3 md:flex-row gap-4 w-full text-est-light-grey">
-              <div className="flex flex-col w-full gap-1 relative">
-                <label htmlFor="category">Category</label>
-                <input
-                  readOnly
-                  type="text"
-                  name="category"
-                  id="category"
-                  placeholder="-select category-"
-                  onChange={(e) => handleInput(e)}
-                  onClick={() => setShowCategories(true)}
-                  value={сategory.name || ""}
-                  className="px-4 py-2 focus:border-indigo-500 transition-all outline-none rounded-md border border-slate-700 text-est-light-grey bg-est-violet-bright"
-                />
-                <div
-                  className={`absolute top-[101%] bg-slate-800 w-full transition-all ${
-                    showCategories ? "scale-100" : "scale-0"
-                  }`}
-                >
-                  <div className="w-full px-4 py-2 fixed">
-                    <input
-                      value={searchValue || ""}
-                      type="text"
-                      placeholder="Search"
-                      className="px-3 py-1  outline-none bg-transparent bg-slate-500 w-full rounded-md text-est-light-grey overflow-hidden focus:border-indigo-500"
-                      onChange={(e) => handleCategorySearch(e)}
-                    />
-                  </div>
-                  <div className="pt-14"></div>
-                  <div className="flex justify-start items-start flex-col h-[200px] overflow-scroll">
-                    {allCategories.map((cat, index) => (
-                      <span
-                        className={`px-4 py-2 hover:bg-indigo-500 w-full cursor-pointer ${
-                          сategory === cat.name && "bg-indigo-500"
-                        }`}
-                        key={index}
-                        onClick={() => {
-                          setShowCategories(false);
-                          setCategory(cat.name);
-                          setSearchValue("");
-                        }}
-                      >
-                        {cat.name}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <SelectWithSearch
+                handleInput={handleInput}
+                category={category}
+                allCategories={allCategories}
+                setCategory={setCategory}
+                setAllCategories={setAllCategories}
+                categories={categories}
+              />
               <InputWithLabel
                 type="text"
                 name="stock"
@@ -243,50 +196,12 @@ const EditProduct = () => {
               label="Description"
               additionalLabelClass="mb-0"
             />
-            <div className="w-full mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 md:grid-cols-3 lg:grid-cols-4 text-est-light-grey">
-              {imagesUrls.map((img, i) => (
-                <div className="h-[180px] relative" key={i}>
-                  <label htmlFor={i}>
-                    <img
-                      className="w-auto h-auto max-h-full cursor-pointer"
-                      src={img.url}
-                      alt={img.alt}
-                    />
-                  </label>
-                  <input
-                    onChange={(e) => changeImage(e.target.files[0], i)}
-                    type="file"
-                    accept="image/*"
-                    id={i}
-                    className="hidden"
-                  />
-                  <span
-                    onClick={() => removeImage(i)}
-                    className="z-2 cursor-pointer bg-slate-700 hover:shadow-lg hover:shadow-slate-400/50 text-est-light-grey absolute top-1 right-1 rounded-full"
-                  >
-                    <IoMdCloseCircle className="text-2xl" />
-                  </span>
-                </div>
-              ))}
-              <label
-                htmlFor="image"
-                className="flex justify-center items-center flex-col h-[180px] cursor-pointer border border-dashed hover:border-red-500 "
-              >
-                <span>
-                  <IoMdImages />
-                </span>
-                <span>Select image</span>
-                <input
-                  multiple
-                  type="file"
-                  accept="image/*"
-                  name="image"
-                  id="image"
-                  className="hidden"
-                  onChange={(e) => handleImage(e)}
-                />
-              </label>
-            </div>
+            <ImagesUploader
+              imagesUrls={imagesUrls}
+              handleImage={handleImage}
+              removeImage={removeImage}
+              changeImage={changeImage}
+            />
             <div className="flex pt-5">
               <RedButton handleClick={(e) => handleSubmit(e)}>
                 Save changes
