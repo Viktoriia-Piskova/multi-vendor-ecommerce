@@ -4,6 +4,7 @@ import { FadeLoader } from "react-spinners";
 import { FaEdit } from "react-icons/fa";
 import RedButton from "../components/ui/RedButton";
 import InputWithLabel from "../components/ui/InputWithLabel";
+import LabeledText from "../components/ui/LabeledText";
 
 const Profile = () => {
   const image = true;
@@ -68,24 +69,12 @@ const Profile = () => {
                 <span className="p-[6px] bg-yellow-500 rounded hover:shadow-lg hover:shadow-yellow-500/50 absolute right-2 cursor-pointer">
                   <FaEdit />
                 </span>
-                <div className="flex gap-2">
-                  <span className="font-semibold">Name: </span>
-                  <span>Seller Name</span>
-                </div>
-                <div className="flex gap-2">
-                  <span className="font-semibold">Email: </span>
-                  <span>test@te.st</span>
-                </div>
-                <div className="flex gap-2">
-                  <span className="font-semibold">Role: </span>
-                  <span>Seller</span>
-                </div>
-                <div className="flex gap-2">
-                  <span className="font-semibold">Status: </span>
-                  <span>Active</span>
-                </div>
-                <div className="flex gap-2">
-                  <span className="font-semibold">Payment Account: </span>
+
+                <LabeledText label={"Name"}>Seller Name</LabeledText>
+                <LabeledText label={"Email"}>test@te.st</LabeledText>
+                <LabeledText label={"Role"}>Seller</LabeledText>
+                <LabeledText label={"Status"}>Active</LabeledText>
+                <LabeledText label={"Payment Account"}>
                   <p>
                     {status === "active" ? (
                       <span className="bg-green-500 cursor-pointer ml-2 px-2 py-1 rounded text-white text-sm">
@@ -97,7 +86,7 @@ const Profile = () => {
                       </span>
                     )}
                   </p>
-                </div>
+                </LabeledText>
               </div>
             </div>
             <div className="px-0 md:px-5 py-2">
