@@ -4,6 +4,7 @@ import Chart from "react-apexcharts";
 import { MdCurrencyExchange, MdProductionQuantityLimits } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
+import RecentMessages from "../components/ui/RecentMessages";
 
 const AdminDashboard = () => {
   const dummyOrdersData = [1, 2, 3, 4, 5];
@@ -160,46 +161,14 @@ const AdminDashboard = () => {
             </div>
             <div className="flex flex-col gap-2 pt-6 text-est-light-grey">
               <ol className="relative border-1 border-slate-600 ml-4">
-                <li className="mb-3 ml-6">
-                  <div className="flex absolute -left-5 shadow-lg justify-center items-center w-10 h-10 p-[6px] bg-[#4c7fe2] rounded-full z-10">
-                    <img
-                      className="w-full rounded-full h-full shadow-lg"
-                      src="http://localhost:3000/images/admin.jpg"
-                      alt="Seller Avatar"
-                    />
-                  </div>
-                  <div className="p-3 bg-slate-800 rounded-lg border border-slate-600 shadow-sm">
-                    <div className="flex justify-between items-center mb-2">
-                      <Link className="text-md font-normal">Admin</Link>
-                      <p className="text-sm font-normal sm:order-last sm:mb-0">
-                        2 days ago
-                      </p>
-                    </div>
-                    <div className="p-2 text-xs font-normal bg-slate-700 rounded-lg border border-slate-800">
-                      <p>First message text</p>
-                    </div>
-                  </div>
-                </li>
-                <li className="mb-3 ml-6">
-                  <div className="flex absolute -left-5 shadow-lg justify-center items-center w-10 h-10 p-[6px] bg-[#4c7fe2] rounded-full z-10">
-                    <img
-                      className="w-full rounded-full h-full shadow-lg"
-                      src="http://localhost:3000/images/admin.jpg"
-                      alt="Seller Avatar"
-                    />
-                  </div>
-                  <div className="p-3 bg-slate-800 rounded-lg border border-slate-600 shadow-sm">
-                    <div className="flex justify-between items-center mb-2">
-                      <Link className="text-md font-normal">Admin</Link>
-                      <p className="text-sm font-normal sm:order-last sm:mb-0">
-                        10 days ago
-                      </p>
-                    </div>
-                    <div className="p-2 text-xs font-normal bg-slate-700 rounded-lg border border-slate-800">
-                      <p>Second message text</p>
-                    </div>
-                  </div>
-                </li>
+                <RecentMessages
+                  time="10 days ago"
+                  text="The first recent message"
+                />
+                <RecentMessages
+                  time="1h ago"
+                  text="The latest recent message"
+                />
               </ol>
             </div>
           </div>
