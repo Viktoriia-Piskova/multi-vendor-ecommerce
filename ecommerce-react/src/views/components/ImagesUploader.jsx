@@ -36,7 +36,7 @@ const ImagesUploader = ({imagesUrls, changeImage, removeImage, handleImage}) => 
         <span>
           <IoMdImages />
         </span>
-        <span>Select image</span>
+        <span>Select images</span>
         <input
           multiple
           type="file"

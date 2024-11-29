@@ -6,6 +6,7 @@ import { IoMdCloseCircle } from "react-icons/io";
 import Pagination from "../components/Pagination";
 import RedButton from "../components/ui/RedButton";
 import InputWithLabel from "../components/ui/InputWithLabel";
+import SingleImageUploader from "../components/ui/SingleImageUploader";
 
 const Categories = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -122,23 +123,7 @@ const Categories = () => {
                   placeholder="Category name"
                   additionalInputClass="bg-white"
                 />
-                <div>
-                  <label
-                    htmlFor="image"
-                    className="flex flex-col justify-center items-center h-[238px] cursor-pointer border border-dashed hover:border-red-500 w-full border-est-light-grey transition-all"
-                  >
-                    <span>
-                      <FaImage />
-                    </span>
-                    <span>Select image</span>
-                  </label>
-                  <input
-                    className="hidden"
-                    type="file"
-                    name="image"
-                    id="image"
-                  />
-                </div>
+                <SingleImageUploader />
                 <div>
                   <RedButton
                     handleClick={(e) => handleSubmit(e)}
