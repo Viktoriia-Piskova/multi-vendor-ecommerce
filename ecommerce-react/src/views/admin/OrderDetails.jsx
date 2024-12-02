@@ -1,22 +1,39 @@
 import React from "react";
+import Select from "../components/ui/Select";
 
 const OrderDetails = () => {
+  const orderStatuses = [
+    {
+      value: "pending",
+      text: "Pending",
+    },
+    {
+      value: "processing",
+      text: "Processing",
+    },
+    {
+      value: "warehouse",
+      text: "Warehouse",
+    },
+    {
+      value: "placed",
+      text: "Placed",
+    },
+    {
+      value: "cancelled",
+      text: "Cancelled",
+    },
+  ];
+
   return (
     <div className="est-container">
       <div className="est-container-violet">
         <div className="flex justify-between items-center p-4">
           <h2 className="text-xl text-est-light-grey">Order Details</h2>
-          <select
-            name=""
-            id=""
-            className="px-4 py-2 border border-slate-700 rounded-md text-est-light-grey focus:border-indigo-500 outline-none bg-est-gray-meduim"
-          >
-            <option value="pending">Pending</option>
-            <option value="processing">Processing</option>
-            <option value="warehouse">Warehouse</option>
-            <option value="placed">Placed</option>
-            <option value="cancelled">Cancelled</option>
-          </select>
+          <Select
+            options={orderStatuses}
+            additionalClasses={"bg-est-gray-meduim"}
+          />
         </div>
         <div className="p-4">
           <div className="flex gap-2 text-lg text-est-light-grey">

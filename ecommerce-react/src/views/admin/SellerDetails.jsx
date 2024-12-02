@@ -1,11 +1,28 @@
 import React from "react";
 import RedButton from "../components/ui/RedButton";
+import Select from "../components/ui/Select";
+import LabeledText from "../components/ui/LabeledText";
 
 const SellerDetails = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("handleSubmit");
   };
+
+  const sellerStatuses = [
+    {
+      value: "",
+      text: "--select--",
+    },
+    {
+      value: "active",
+      text: "Active",
+    },
+    {
+      value: "inactive",
+      text: "Inactive",
+    },
+  ];
 
   return (
     <div className="est-container">
@@ -26,32 +43,12 @@ const SellerDetails = () => {
               <div className="py-2 text-lg">
                 <h2>Basic info</h2>
               </div>
-              <div className="flex justify-between text-sm flex-col gap-2 p-4 bg-est-blue-light rounded-md">
-                <div className="flex gap-2 text-slate-950 font-bold">
-                  <p>
-                    Name: <span>Name</span>
-                  </p>
-                </div>
-                <div className="flex gap-2 text-slate-950 font-bold">
-                  <p>
-                    Email: <span>seller@test.com</span>
-                  </p>
-                </div>
-                <div className="flex gap-2 text-slate-950 font-bold">
-                  <p>
-                    Role: <span>Seller</span>
-                  </p>
-                </div>
-                <div className="flex gap-2 text-slate-950 font-bold">
-                  <p>
-                    Status: <span>Active</span>
-                  </p>
-                </div>
-                <div className="flex gap-2 text-slate-950 font-bold">
-                  <p>
-                    Payment Status: <span>Active</span>
-                  </p>
-                </div>
+              <div className="flex text-slate-950 justify-between text-sm flex-col gap-2 p-4 bg-est-blue-light rounded-md">
+                <LabeledText label={"Name"}>Seller Name</LabeledText>
+                <LabeledText label={"Email"}>seller@test.com</LabeledText>
+                <LabeledText label={"Role"}>Seller</LabeledText>
+                <LabeledText label={"Status"}>Active</LabeledText>
+                <LabeledText label={"Payment Status"}>Active</LabeledText>
               </div>
             </div>
           </div>
@@ -60,27 +57,11 @@ const SellerDetails = () => {
               <div className="py-2 text-lg">
                 <h2>Address</h2>
               </div>
-              <div className="flex justify-between text-sm flex-col gap-2 p-4 bg-est-blue-light rounded-md">
-                <div className="flex gap-2 text-slate-950 font-bold">
-                  <p>
-                    Shop Name: <span>Name of Shop</span>
-                  </p>
-                </div>
-                <div className="flex gap-2 text-slate-950 font-bold">
-                  <p>
-                    Division: <span>Volyn</span>
-                  </p>
-                </div>
-                <div className="flex gap-2 text-slate-950 font-bold">
-                  <p>
-                    District: <span>Obolon</span>
-                  </p>
-                </div>
-                <div className="flex gap-2 text-slate-950 font-bold">
-                  <p>
-                    State: <span>Cherkaschyna</span>
-                  </p>
-                </div>
+              <div className="flex justify-between text-sm flex-col gap-2 p-4 bg-est-blue-light text-slate-950 rounded-md">
+                <LabeledText label={"Shop Name"}>Amazing Shop</LabeledText>
+                <LabeledText label={"Division"}>Volyn</LabeledText>
+                <LabeledText label={"District"}>Obolon</LabeledText>
+                <LabeledText label={"State"}>Cherkaschyna</LabeledText>
               </div>
             </div>
           </div>
@@ -88,15 +69,7 @@ const SellerDetails = () => {
         <div>
           <form action="">
             <div className="flex gap-4 py-3">
-              <select
-                className="px-4 py-2 hover:cursor-pointer focus:border-indigo-500 transition-all outline-none bg-est-violet-bright border border-slate-700 rounded-md text-est-light-grey"
-                name=""
-                id=""
-              >
-                <option value="">--Select Status--</option>
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
-              </select>
+              <Select options={sellerStatuses} />
               <RedButton handleClick={(e) => handleSubmit(e)}>Submit</RedButton>
             </div>
           </form>
