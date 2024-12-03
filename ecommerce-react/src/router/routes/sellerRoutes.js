@@ -9,6 +9,7 @@ const DiscoundProducts = lazy(() =>
   import("../../views/seller/DiscoundProducts")
 );
 const Orders = lazy(() => import("../../views/seller/Orders"));
+const OrderDetails = lazy(() => import("../../views/seller/OrderDetails"));
 const Payments = lazy(() => import("../../views/seller/Payments"));
 const ChatSellerToAdmin = lazy(() =>
   import("../../views/seller/ChatSellerToAdmin")
@@ -58,6 +59,12 @@ export const sellerRoutes = [
   {
     path: "/seller/dashboard/orders",
     element: <Orders />,
+    role: "seller",
+    ability: ["active", "inactive"],
+  },
+  {
+    path: "/seller/dashboard/order/details/:id",
+    element: <OrderDetails />,
     role: "seller",
     ability: ["active", "inactive"],
   },
