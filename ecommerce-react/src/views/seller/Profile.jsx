@@ -127,22 +127,10 @@ const Profile = () => {
                   <span className="p-[6px] bg-yellow-500 rounded hover:shadow-lg hover:shadow-yellow-500/50 absolute right-2 cursor-pointer">
                     <FaEdit />
                   </span>
-                  <div className="flex gap-2">
-                    <span className="font-semibold">Shop name: </span>
-                    <span>The best shop ever</span>
-                  </div>
-                  <div className="flex gap-2">
-                    <span className="font-semibold">Division: </span>
-                    <span>Naddniprianschyna</span>
-                  </div>
-                  <div className="flex gap-2">
-                    <span className="font-semibold">District: </span>
-                    <span>Cherkasy</span>
-                  </div>
-                  <div className="flex gap-2">
-                    <span className="font-semibold">Sub District: </span>
-                    <span>Zolotonosha</span>
-                  </div>
+                  <LabeledText label={"Shop name"}>The best shop ever</LabeledText>
+                  <LabeledText label={"Division"}>Naddniprianschyna</LabeledText>
+                  <LabeledText label={"District"}>Cherkasy</LabeledText>
+                  <LabeledText label={"Sub District"}>Zolotonosha</LabeledText>
                 </div>
               )}
             </div>
