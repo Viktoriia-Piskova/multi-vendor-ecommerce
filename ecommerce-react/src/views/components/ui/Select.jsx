@@ -9,8 +9,8 @@ const Select = ({ value, onChange, options, name, id, additionalClasses }) => {
       value={value}
       onChange={onChange}
     >
-      {options.map((option) => (
-        <option value={option.value}>{option.text}</option>
+      {options.map((option, index) => (
+        <option key={index} value={option.value}>{option.text}</option>
       ))}
     </select>
   );

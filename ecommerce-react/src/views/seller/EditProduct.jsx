@@ -94,7 +94,10 @@ const EditProduct = () => {
       stock: "Cherkasy",
     });
     setCategory({ id: 1, name: "Sport" });
-    setImagesUrls([{ url: "http://localhost:3000/images/categories/2.jpg" }]);
+    setImagesUrls([
+      { url: "http://localhost:3000/images/categories/2.jpg" },
+      { url: "http://localhost:3000/images/categories/3.jpg" },
+    ]);
   }, []);
 
   useEffect(() => {
