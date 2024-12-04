@@ -5,6 +5,7 @@ import { PropagateLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import InputWithLabel from "../components/ui/InputWithLabel";
+import {propagateLoaderStylesOverride} from '../../utils/utils'
 
 const AdminLogin = () => {
   const dispatch = useDispatch();
@@ -25,14 +26,6 @@ const AdminLogin = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     dispatch(admin_login(formState));
-  };
-
-  const propagateLoaderStylesOverride = {
-    display: "flex",
-    margin: "0 auto",
-    height: "24px",
-    justifyContent: "center",
-    alignItems: "center",
   };
 
   useEffect(() => {

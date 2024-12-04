@@ -1,4 +1,5 @@
 const adminModel = require("../models/adminModel");
+const sellerModel = require("../models/sellerModel");
 const { responseReturn } = require("../utilities/response");
 const bcrypt = require("bcrypt");
 const { createToken } = require("../utilities/tokenCreator");
@@ -27,6 +28,27 @@ class AuthControllers {
       }
     } catch (error) {
       responseReturn(res, 500, { error: error.message });
+    }
+  };
+
+  seller_register = async (req, res) => {
+    console.log(req.body);
+    const { email, name, password } = req.body;
+    try {
+      const getUser = await sellerModel.findOne({ email });
+      if (getUser) {
+        responseReturn(res, 404, { error: "Email already exists" });
+      } else {
+        const seller = await sellerModel.create({
+          name,
+          email,
+          password: await bcrypt.hash(password, 10),
+          method: "manual",
+        });
+        console.log(seller);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
