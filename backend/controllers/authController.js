@@ -32,6 +32,33 @@ class AuthControllers {
     }
   };
 
+  seller_login = async (req, res) => {
+    const { email, password } = req.body;
+    try {
+      const seller = await sellerModel.findOne({ email }).select("+password");
+      if (seller) {
+        const match = await bcrypt.compare(password, seller.password);
+        if (match) {
+          const token = await createToken({
+            id: seller.id,
+            role: seller.role,
+          });
+          res.cookie("accessToken", token, {
+            expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
+          });
+          responseReturn(res, 200, { token, message: "Login success" });
+        } else {
+          responseReturn(res, 401, { error: "Password is wrong" });
+        }
+      } else {
+        responseReturn(res, 401, { error: "Email not found" });
+      }
+    } catch (error) {
+      console.log(error);
+      responseReturn(res, 500, { error: error.message });
+    }
+  };
+
   seller_register = async (req, res) => {
     console.log(req.body);
     const { email, name, password } = req.body;
@@ -57,7 +84,10 @@ class AuthControllers {
         res.cookie("sellerAccessToken", token, {
           expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
         });
-        responseReturn(res, 201, { token, message: "Successfull seller registration" });
+        responseReturn(res, 201, {
+          token,
+          message: "Successfull seller registration",
+        });
       }
     } catch (error) {
       responseReturn(res, 500, { error: "Internal Server Error" });

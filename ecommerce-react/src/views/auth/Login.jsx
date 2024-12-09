@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import InputWithLabel from "../components/ui/InputWithLabel";
+import { useDispatch, useSelector } from "react-redux";
+import { seller_login, clearMessage } from "../../store/Reducers/authReducer";
+import { PropagateLoader } from "react-spinners";
+import toast from "react-hot-toast";
+import {propagateLoaderStylesOverride} from '../../utils/utils'
+
 
 const Login = () => {
   const [formState, setFormState] = useState({
@@ -16,8 +22,26 @@ const Login = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(formState);
+    dispatch(seller_login(formState));
   };
+
+  const dispatch = useDispatch();
+  const { loader, errorMessage, successMessage } = useSelector(
+    (state) => state.auth
+  );
+
+  
+  useEffect(() => {
+    if (errorMessage) {
+      
+      toast.error(errorMessage);
+      dispatch(clearMessage());
+    }
+    if (successMessage) {
+      toast.success(successMessage);
+      dispatch(clearMessage());
+    }
+  }, [errorMessage, successMessage]);
 
   return (
     <div className="min-w-screen min-h-screen bg-[#cdcae9] flex justify-center items-center">
@@ -50,8 +74,15 @@ const Login = () => {
                 "bg-transparent border-slate-400 focus:border-slate-200"
               }
             />
-            <button className="bg-slate-800 w-full hover:shadow-blue-300/50 hover:shadow-md text-white rounded-md px-7 py-2 mb-3 transition-all duration-300 ease-in-out">
-              Log in
+            <button
+              disabled={loader}
+              className="bg-slate-800 w-full hover:shadow-blue-300/50 hover:shadow-md text-white rounded-md px-7 py-2 mb-3 transition-all duration-300 ease-in-out disabled:opacity-70"
+            >
+              {loader ? (
+                <PropagateLoader cssOverride={propagateLoaderStylesOverride} />
+              ) : (
+                "Log in"
+              )}
             </button>
             <div className="flex items-center mb-3 gap-3 justify-center">
               <p>
