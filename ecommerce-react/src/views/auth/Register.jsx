@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { FaGoogle } from "react-icons/fa";
@@ -6,11 +6,15 @@ import { FaFacebook } from "react-icons/fa";
 import InputWithLabel from "../components/ui/InputWithLabel";
 import { PropagateLoader } from "react-spinners";
 import { propagateLoaderStylesOverride } from "../../utils/utils";
-import { seller_register } from "../../store/Reducers/authReducer";
+import { seller_register, clearMessage } from "../../store/Reducers/authReducer";
+import toast from "react-hot-toast";
+
 
 const Register = () => {
   const dispatch = useDispatch();
-  const { loader } = useSelector((state) => state.auth);
+  const { loader, errorMessage, successMessage } = useSelector(
+    (state) => state.auth
+  );
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -25,6 +29,18 @@ const Register = () => {
     e.preventDefault();
     dispatch(seller_register(formState));
   };
+
+
+  useEffect(() => {
+    if (errorMessage) {
+      toast.error(errorMessage);
+      dispatch(clearMessage());
+    }
+    if (successMessage) {
+      toast.success(successMessage);
+      dispatch(clearMessage());
+    }
+  }, [errorMessage, successMessage]);
 
   return (
     <div className="min-w-screen min-h-screen bg-[#cdcae9] flex justify-center items-center">
@@ -93,7 +109,7 @@ const Register = () => {
               {loader ? (
                 <PropagateLoader cssOverride={propagateLoaderStylesOverride} />
               ) : (
-                "Sign up"
+                "Register"
               )}
             </button>
 

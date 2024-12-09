@@ -1,5 +1,6 @@
 const adminModel = require("../models/adminModel");
 const sellerModel = require("../models/sellerModel");
+const sellerToCustomerModel = require("../models/chat/sellerToCustomerModel");
 const { responseReturn } = require("../utilities/response");
 const bcrypt = require("bcrypt");
 const { createToken } = require("../utilities/tokenCreator");
@@ -45,10 +46,21 @@ class AuthControllers {
           password: await bcrypt.hash(password, 10),
           method: "manual",
         });
-        console.log(seller);
+        await sellerToCustomerModel.create({
+          id: seller.id,
+        });
+
+        const token = await createToken({
+          id: seller.id,
+          role: seller.role,
+        });
+        res.cookie("sellerAccessToken", token, {
+          expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
+        });
+        responseReturn(res, 201, { token, message: "Successfull seller registration" });
       }
     } catch (error) {
-      console.log(error);
+      responseReturn(res, 500, { error: "Internal Server Error" });
     }
   };
 

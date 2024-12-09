@@ -26,7 +26,7 @@ export const seller_register = createAsyncThunk(
         withCredentials: true,
       });
       localStorage.setItem("accessToken", data.token);
-      console.log(data);
+      // console.log(data);
       return fulfillWithValue(data);
     } catch (error) {
       return rejectWithValue(error.response.data.error);
@@ -57,6 +57,18 @@ export const authReducer = createSlice({
       state.errorMessage = payload;
     });
     builder.addCase(admin_login.fulfilled, (state, { payload }) => {
+      state.loader = false;
+      state.successMessage = payload.message;
+      state.userInfo = payload;
+    });
+    builder.addCase(seller_register.pending, (state, { payload }) => {
+      state.loader = true;
+    });
+    builder.addCase(seller_register.rejected, (state, { payload }) => {
+      state.loader = false;
+      state.errorMessage = payload;
+    });
+    builder.addCase(seller_register.fulfilled, (state, { payload }) => {
       state.loader = false;
       state.successMessage = payload.message;
       state.userInfo = payload;
